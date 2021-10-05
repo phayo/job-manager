@@ -4,7 +4,8 @@ import java.util.Comparator;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import com.chukwuebuka.jobmanager.doman.Job;
-import com.chukwuebuka.jobmanager.job.JobQueue;
+import com.chukwuebuka.jobmanager.service.JobQueue;
+import org.springframework.stereotype.Component;
 
 public class DefaultJobQueueProvider implements JobQueue {
     private static final int DEFAULT_QUEUE_CAPACITY = 10;
@@ -18,5 +19,9 @@ public class DefaultJobQueueProvider implements JobQueue {
 
     public Job poll(){
         return this.taskQueue.poll();
+    }
+
+    public boolean isEmpty(){
+        return this.taskQueue.isEmpty();
     }
 }
